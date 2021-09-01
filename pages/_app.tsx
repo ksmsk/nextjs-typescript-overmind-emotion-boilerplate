@@ -7,15 +7,15 @@ import {
   Overmind,
 } from "overmind";
 import { Provider } from "overmind-react";
-import { storeConfig } from "@shared/store";
+import { IAppContext, storeConfig } from "@lib/store";
 import { CacheProvider, Global, ThemeProvider } from "@emotion/react";
 import { cache } from "@emotion/css";
-import { primaryTheme, secondaryTheme } from "@shared/styles/theme";
-import { Themes } from "@shared/store/base/state";
-import { cssReset } from "@shared/styles/cssReset";
+import { primaryTheme, secondaryTheme } from "@lib/styles/theme";
+import { Themes } from "@lib/store/base/state";
+import { cssReset } from "@lib/styles/cssReset";
 
 class MyApp extends App {
-  private readonly overmind: Overmind<typeof storeConfig>;
+  private readonly overmind: Overmind<IAppContext>;
   private disposeReaction: any;
 
   constructor(props: any) {

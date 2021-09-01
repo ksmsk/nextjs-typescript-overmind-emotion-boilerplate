@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { FC } from "react";
 import styled from "@emotion/styled";
-import { useOvermind } from "@shared/store";
+import { useActions, useAppState } from "@lib/store";
 
 type Props = {
   titleColor: string;
@@ -13,14 +13,12 @@ const StyledHeader = styled.h1<Props>`
 `;
 
 export const Header: FC<Props> = ({ titleColor }) => {
-  const {
-    state,
-    actions: { toggleTheme },
-  } = useOvermind();
+  const { page } = useAppState();
+  const { toggleTheme } = useActions();
 
   return (
     <div>
-      <StyledHeader titleColor={titleColor}>{state.page}</StyledHeader>
+      <StyledHeader titleColor={titleColor}>{page}</StyledHeader>
       <Link href={"/"}>
         <a>Home page</a>
       </Link>
